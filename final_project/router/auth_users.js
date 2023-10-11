@@ -61,10 +61,10 @@ regd_users.post("/login", async (req,res) => {
 });
 
 // Add a book review
-regd_users.put("/auth/review/:isbn", (req, res) => {
+regd_users.put("/auth/review/:isbn", async (req, res) => {
   //Write your code here
   try{
-    const { review } = req.body;
+    const review = req.query.review;
     const isbn = parseInt(req.params.isbn)
     if(!books[isbn]){
         return res
@@ -86,7 +86,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 });
 
 // delete book review
-regd_users.delete("/auth/review/:isbn", (req, res) => {
+regd_users.delete("/auth/review/:isbn", async (req, res) => {
   //Write your code here
   try{
     const isbn = parseInt(req.params.isbn)
